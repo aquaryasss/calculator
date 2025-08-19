@@ -1,0 +1,22 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background-color: #f1eada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#phone {
+	background-color: #cec1ab;
+	border-radius: 20px;
+	width: 349px;
+	height: 620px;
+	flex-shrink: 0;
+}
