@@ -1,5 +1,6 @@
 const inputButtons = document.querySelectorAll('.input-button');
 const mainDisplay = document.querySelector('#main-display');
+const secondaryDisplay = document.querySelector('#secondary-display');
 const eraseButton = document.querySelector('#erase');
 const plusButton = document.querySelector('#plus');
 const minusButton = document.querySelector('#minus');
@@ -80,7 +81,23 @@ function appendToDisplay(userInput){
     mainDisplay.textContent = currentInput;
 }
 
+function getOperatorSymbol(op) {
+    switch(op){
+        case 'addition': return '+';
+        case 'subtraction': return '-';
+        case 'multiplication': return '×';
+        case 'division': return '÷';
+        case 'modulo': return '%';
+    }
+}
+
 function setOperation(op){
+    if (operation && currentInput === "") {
+        operation = op;
+        const operatorSymbol = getOperatorSymbol(op);
+        secondaryDisplay.textContent = `${operand1} ${operatorSymbol}`;
+        return;
+    }
     if(operation){
         operand2 = Number(currentInput);
         operate(operand1, operand2);
@@ -89,6 +106,8 @@ function setOperation(op){
     operand1 = Number(mainDisplay.textContent);
     currentInput = "";
     operation = op;
+    const operatorSymbol = getOperatorSymbol(op);
+    secondaryDisplay.textContent = `${operand1} ${operatorSymbol}`;
 }
 
 inputButtons.forEach(input => { // add operation keys
@@ -130,15 +149,19 @@ equalButton.addEventListener('click', () => {
     if(!operation || currentInput == "")
         return;
     operand2 = Number(currentInput);
+    const operatorSymbol = getOperatorSymbol(operation);
+    secondaryDisplay.textContent = `${operand1} ${operatorSymbol} ${operand2}`;
     operate(operand1, operand2);
     operation = null;
 });
 
 clearButton.addEventListener('click', () => {
     operand1 = operand2 = 0;
+    operation = null;
     currentInput = "";
     result = 0;
     mainDisplay.textContent = "0";
+    secondaryDisplay.textContent = "";
 });
 
 mainDisplay.textContent = "0";

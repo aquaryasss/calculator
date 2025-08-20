@@ -42,9 +42,20 @@ body {
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: flex-end;
+    box-sizing: border-box;
     padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    word-wrap: break-word;
+}
+
+#secondary-display {
+    font-size: 1.5rem;
+    color: var(--mahogany);
+    font-weight: 500;
 }
 
 #main-display {
