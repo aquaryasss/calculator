@@ -37,5 +37,5 @@ A fully functional, browser-based calculator built with vanilla JavaScript, HTML
 ### **Screenshots**
 
 ![Default Screen](images/default.png)
-![Performing Calculation](images/calculation.png)
+![Performing Calculation](images/calculating.png)
 
