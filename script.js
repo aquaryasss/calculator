@@ -1,3 +1,18 @@
+const inputButtons = document.querySelectorAll('.input-button');
+const mainDisplay = document.querySelector('#main-display');
+const eraseButton = document.querySelector('#erase');
+const plusButton = document.querySelector('#plus');
+const minusButton = document.querySelector('#minus');
+const timesButton = document.querySelector('#multiply');
+const divideButton = document.querySelector('#divide');
+const equalButton = document.querySelector('#equal');
+const moduloButton = document.querySelector('#modulo');
+const clearButton = document.querySelector('#clear');
+let currentInput = "";
+let operand1 = 0;
+let operand2 = 0;
+let operation;
+
 function add(x, y){
 	return x + y;
 }
@@ -18,7 +33,17 @@ function modulo(x, y){
 	return x % y;
 }
 
+function hasLongDecimal(num){
+    const output = String(num);
+    if(!output.includes('.'))
+        return false;
+    const decimalPart = output.split('.')[1];
+    return decimalPart.length > 5;
+}
+
 function operate(x, y){
+    x = Number(x);
+    y = Number(y);
     let result;
     if(operation == 'addition')
         result = add(x, y);
@@ -26,28 +51,20 @@ function operate(x, y){
         result = subtract(x, y);
     else if(operation == 'multiplication')
         result = multiply(x, y);
-    else if(operation == 'division')
-        result = divide(x, y);
-    else if(operation == 'modulo')
+    else if(operation == 'division'){
+        if(operand2 == 0)
+            result = "BAWAL 0";
+        else
+            result = divide(x, y);
+    }else if(operation == 'modulo')
         result = modulo(x, y);
+    if(hasLongDecimal(result))
+        result = result.toFixed(5);
+        
     operand1 = result;
     mainDisplay.textContent = result;
+    currentInput = "";
 }
-
-const inputButtons = document.querySelectorAll('.input-button');
-const mainDisplay = document.querySelector('#main-display');
-const eraseButton = document.querySelector('#erase');
-const plusButton = document.querySelector('#plus');
-const minusButton = document.querySelector('#minus');
-const timesButton = document.querySelector('#multiply');
-const divideButton = document.querySelector('#divide');
-const equalButton = document.querySelector('#equal');
-const moduloButton = document.querySelector('#modulo');
-const clearButton = document.querySelector('#clear');
-let currentInput = "";
-let operand1 = 0;
-let operand2 = 0;
-let operation;
 
 function handleKeyboardInput(userInput){ // add operation keys
     const key = userInput.key;
@@ -61,6 +78,17 @@ function appendToDisplay(userInput){
         return;
     currentInput += userInput;
     mainDisplay.textContent = currentInput;
+}
+
+function setOperation(op){
+    if(operation){
+        operand2 = Number(currentInput);
+        operate(operand1, operand2);
+    }
+
+    operand1 = Number(mainDisplay.textContent);
+    currentInput = "";
+    operation = op;
 }
 
 inputButtons.forEach(input => { // add operation keys
@@ -79,43 +107,31 @@ eraseButton.addEventListener('click', () => {
 });
 
 plusButton.addEventListener('click', () => {
-    if(operand1 == 0)
-        operand1 = Number(currentInput);
-    currentInput = "";
-    operation = "addition";
+    setOperation("addition");
 });
 
 minusButton.addEventListener('click', () => {
-    if(operand1 == 0)
-        operand1 = Number(currentInput);
-    currentInput = "";
-    operation = "subtraction";
+    setOperation("subtraction");
 });
 
 timesButton.addEventListener('click', () => {
-    if(operand1 == 0)
-        operand1 = Number(currentInput);
-    currentInput = "";
-    operation = "multiplication";
+    setOperation("multiplication");
 });
 
 divideButton.addEventListener('click', () => {
-    if(operand1 == 0)
-        operand1 = Number(currentInput);
-    currentInput = "";
-    operation = "division";
+    setOperation("division");
 });
 
 moduloButton.addEventListener('click', () => {
-    if(operand1 == 0)
-        operand1 = Number(currentInput);
-    currentInput = "";
-    operation = "modulo";
+    setOperation("modulo");
 });
 
 equalButton.addEventListener('click', () => {
+    if(!operation || currentInput == "")
+        return;
     operand2 = Number(currentInput);
     operate(operand1, operand2);
+    operation = null;
 });
 
 clearButton.addEventListener('click', () => {
