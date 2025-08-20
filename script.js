@@ -18,14 +18,36 @@ function modulo(x, y){
 	return x % y;
 }
 
-function operate(op, x, y){
-	// calls one of the above functions on the numbers
+function operate(x, y){
+    let result;
+    if(operation == 'addition')
+        result = add(x, y);
+    else if(operation == 'subtraction')
+        result = subtract(x, y);
+    else if(operation == 'multiplication')
+        result = multiply(x, y);
+    else if(operation == 'division')
+        result = divide(x, y);
+    else if(operation == 'modulo')
+        result = modulo(x, y);
+    operand1 = result;
+    mainDisplay.textContent = result;
 }
 
 const inputButtons = document.querySelectorAll('.input-button');
 const mainDisplay = document.querySelector('#main-display');
 const eraseButton = document.querySelector('#erase');
+const plusButton = document.querySelector('#plus');
+const minusButton = document.querySelector('#minus');
+const timesButton = document.querySelector('#multiply');
+const divideButton = document.querySelector('#divide');
+const equalButton = document.querySelector('#equal');
+const moduloButton = document.querySelector('#modulo');
+const clearButton = document.querySelector('#clear');
 let currentInput = "";
+let operand1 = 0;
+let operand2 = 0;
+let operation;
 
 function handleKeyboardInput(userInput){ // add operation keys
     const key = userInput.key;
@@ -56,11 +78,54 @@ eraseButton.addEventListener('click', () => {
 
 });
 
+plusButton.addEventListener('click', () => {
+    if(operand1 == 0)
+        operand1 = Number(currentInput);
+    currentInput = "";
+    operation = "addition";
+});
 
+minusButton.addEventListener('click', () => {
+    if(operand1 == 0)
+        operand1 = Number(currentInput);
+    currentInput = "";
+    operation = "subtraction";
+});
 
+timesButton.addEventListener('click', () => {
+    if(operand1 == 0)
+        operand1 = Number(currentInput);
+    currentInput = "";
+    operation = "multiplication";
+});
+
+divideButton.addEventListener('click', () => {
+    if(operand1 == 0)
+        operand1 = Number(currentInput);
+    currentInput = "";
+    operation = "division";
+});
+
+moduloButton.addEventListener('click', () => {
+    if(operand1 == 0)
+        operand1 = Number(currentInput);
+    currentInput = "";
+    operation = "modulo";
+});
+
+equalButton.addEventListener('click', () => {
+    operand2 = Number(currentInput);
+    operate(operand1, operand2);
+});
+
+clearButton.addEventListener('click', () => {
+    operand1 = operand2 = 0;
+    currentInput = "";
+    result = 0;
+    mainDisplay.textContent = "0";
+});
+
+mainDisplay.textContent = "0";
 window.addEventListener('keydown', handleKeyboardInput);
 
-/* to fix 
-- cant have many dots 
-*/ 
 

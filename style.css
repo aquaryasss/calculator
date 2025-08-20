@@ -44,6 +44,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    padding-bottom: 15px;
 }
 
 #main-display {
@@ -53,9 +54,9 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     color: var(--mahogany);
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 3rem;
     overflow: hidden;
 }
 
@@ -85,13 +86,13 @@ body {
     border-radius: 30%;
     border: transparent;
     width: 60px;
-    height: 60px;
+    height: 57px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.8rem;
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .lighter-button {
@@ -106,7 +107,7 @@ body {
 
 .bigger-button {
     height: 120px;
-    border-radius: 20%;
+    border-radius: 25%;
 }
 
 
