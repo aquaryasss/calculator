@@ -24,36 +24,12 @@ function operate(op, x, y){
 
 const inputButtons = document.querySelectorAll('.input-button');
 const mainDisplay = document.querySelector('#main-display');
+const eraseButton = document.querySelector('#erase');
 let currentInput = "";
 
 function handleKeyboardInput(userInput){ // add operation keys
     const key = userInput.key;
-    let button;
-    if(key == '.' && currentInput.includes('.'))
-        return;
-    if(key == '0')
-        button = document.querySelector("button[data-key='0']");
-    else if(key == '1')
-        button = document.querySelector("button[data-key='1']");
-    else if(key == '2')
-        button = document.querySelector("button[data-key='2']");
-    else if(key == '3')
-        button = document.querySelector("button[data-key='3']");
-    else if(key == '4')
-        button = document.querySelector("button[data-key='4']");
-    else if(key == '5')
-        button = document.querySelector("button[data-key='5']");
-    else if(key == '6')
-        button = document.querySelector("button[data-key='6']");
-    else if(key == '7')
-        button = document.querySelector("button[data-key='7']");
-    else if(key == '8')
-        button = document.querySelector("button[data-key='8']");
-    else if(key == '9')
-        button = document.querySelector("button[data-key='9']");
-    else if(key == '.')
-        button = document.querySelector("button[data-key='.']");
-
+    const button = document.querySelector(`button[data-key='${key}']`);
     if(button)
         button.click();
 }
@@ -67,9 +43,20 @@ function appendToDisplay(userInput){
 
 inputButtons.forEach(input => { // add operation keys
     input.addEventListener('click', () => {
-        appendToDisplay(input.textContent);
+        appendToDisplay(input.textContent.trim());
     });
 });
+
+eraseButton.addEventListener('click', () => {
+    currentInput = currentInput.slice(0, -1);
+    if(currentInput == "")
+        mainDisplay.textContent = "0";
+    else 
+        mainDisplay.textContent = currentInput;
+
+});
+
+
 
 window.addEventListener('keydown', handleKeyboardInput);
 
