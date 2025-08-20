@@ -32,6 +32,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border: 1px solid var(--mahogany);
 }
 
 #display {
@@ -40,6 +41,22 @@ body {
     height: 40%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#main-display {
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: var(--mahogany);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    overflow: hidden;
 }
 
 #buttons { /* the container for buttons */ 
