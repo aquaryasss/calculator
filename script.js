@@ -22,14 +22,4 @@ function operate(op, x, y){
 	// calls one of the above functions on the numbers
 }
 
-let operand1;
-let operator;
-let operand2;
 
-const phone = document.querySelector('#phone');
-let sum = add(5, 3);
-let difference = subtract(5, 3);
-let product = multiply(5, 3);
-let quotient = divide(5, 3);
-let result = modulo(5, 3);
-phone.textContent = result;

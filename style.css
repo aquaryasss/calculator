@@ -1,3 +1,11 @@
+:root {
+    --mahogany: #584738; /* darkest brown */ 
+    --tobacco: #b59e7d; /* lighter brown */ 
+    --sand: #cec1a8; /* beige-ish */ 
+    --mountain: #aaa396; /* grayish */ 
+    --vanilla: #f1eada; /* off white */ 
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -7,16 +15,81 @@ html, body {
 }
 
 body {
-	background-color: #f1eada;
+	background-color: var(--vanilla);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 #phone {
-	background-color: #cec1ab;
-	border-radius: 20px;
+	background-color: var(--sand);
+	border-radius: 40px;
 	width: 349px;
 	height: 620px;
 	flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
+
+#display {
+    background-color: var(--mountain);
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+#buttons { /* the container for buttons */ 
+    background-color: var(--sand);
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-sizing: border-box;
+    padding: 25px;
+}
+
+#column1, #column2, #column3, #column4 {
+    height: 97%;
+    width: 97%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.button { /* the buttons haha */ 
+    border-radius: 30%;
+    border: transparent;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+}
+
+.lighter-button {
+    background-color: var(--tobacco);
+    color: var(--mahogany);
+}
+
+.darker-button {
+    background-color: var(--mahogany);
+    color: var(--sand);
+}
+
+.bigger-button {
+    height: 120px;
+    border-radius: 20%;
+}
+
+

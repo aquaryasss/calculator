@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Calculator </title>
 	<link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 	<div id="phone">
@@ -12,23 +13,33 @@
 		</div>
 		<div id="buttons">
 			<div id="column1">
-				<div id="clear" class="button smaller-button darker-button"></div>
-				<div id="7" class="button smaller-button lighter-button"></div>
-				<div id="4" class="button smaller-button lighter-button"></div>
-				<div id="1" class="button smaller-button lighter-button"></div>
-				<div id="dot" class="button smaller-button lighter-button"></div>
+				<button type="button" id="clear" class="button smaller-button darker-button">C</button>
+				<button type="button" id="btn-7" class="button smaller-button lighter-button">7</button>
+				<button type="button" id="btn-4" class="button smaller-button lighter-button">4</button>
+				<button type="button" id="btn-1" class="button smaller-button lighter-button">1</button>
+				<button type="button" id="dot" class="button smaller-button lighter-button">.</button>
 			</div>
 			<div id="column2">
-				<div id="modulo" class="button smaller-button lighter-button"></div>
-				<div id="8" class="button smaller-button lighter-button"></div>
-				<div id="5" class="button smaller-button lighter-button"></div>
-				<div id="2" class="button smaller-button lighter-button"></div>
-				<div id="0" class="button smaller-button lighter-button"></div>
+				<button type="button" id="modulo" class="button smaller-button lighter-button">%</button>
+				<button type="button" id="btn-8" class="button smaller-button lighter-button">8</button>
+				<button type="button" id="btn-5" class="button smaller-button lighter-button">5</button>
+				<button type="button" id="btn-2" class="button smaller-button lighter-button">2</button>
+				<button type="button" id="btn-0" class="button smaller-button lighter-button">0</button>
 			</div>
 			<div id="column3">
-
+                <button type="button" id="multiply" class="button smaller-button lighter-button">x</button>
+                <button type="button" id="btn-9" class="button smaller-button lighter-button">9</button>
+                <button type="button" id="btn-6" class="button smaller-button lighter-button">6</button>
+                <button type="button" id="btn-3" class="button smaller-button lighter-button">3</button>
+                <button type="button" id="erase" class="button smaller-button lighter-button" aria-label="backspace">
+                    <i class="fa-solid fa-delete-left"></i>
+                </button>
 			</div>
 			<div id="column4">
+                <button type="button" id="divide" class="button smaller-button lighter-button">&divide;</button>
+                <button type="button" id="plus" class="button smaller-button lighter-button">+</button>
+                <button type="button" id="minus" class="button smaller-button lighter-button">-</button>
+                <button type="button" id="equal" class="button bigger-button darker-button">=</button>
 			</div>
 		</div>
 	</div>
