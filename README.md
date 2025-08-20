@@ -26,11 +26,11 @@ A fully functional, browser-based calculator built with vanilla JavaScript, HTML
 
 1. Clone the repository:
 ```sh 
-    git clone https://github.com/aquaryasss/etch-a-sketch.git
+    git clone https://github.com/aquaryasss/calculator.git
 ```  
 2. Navigate to the project directory:
 ```sh 
-    cd etch-a-sketch
+    cd calculator
 ```  
 3. Open the `index.html` file in your web browser of choice.
 
